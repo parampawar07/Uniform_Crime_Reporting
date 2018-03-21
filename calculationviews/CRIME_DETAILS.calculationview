@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CRIME_DETAILS" applyPrivilegeType="ANALYTIC_PRIVILEGE" dataCategory="CUBE" schemaVersion="2.3" defaultClient="$$client$$" visibility="reportingEnabled" outputViewType="Aggregation" calculationScenarioType="TREE_BASED" enforceSqlExecution="false">
+<descriptions defaultDescription="CRIME_DETAILS"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="gbi-student-006.UCR.tables::VIOLENT_CRIME_MASTER" type="DATA_BASE_TABLE">
+    <viewAttributes allViewAttributes="true"/>
+    <columnObject schemaName="GBI_006" columnObjectName="gbi-student-006.UCR.tables::VIOLENT_CRIME_MASTER"/>
+  </DataSource>
+  <DataSource id="gbi-student-006.UCR.tables::PROPERTY_CRIME_MASTER" type="DATA_BASE_TABLE">
+    <viewAttributes allViewAttributes="true"/>
+    <columnObject schemaName="GBI_006" columnObjectName="gbi-student-006.UCR.tables::PROPERTY_CRIME_MASTER"/>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="inner" cardinality="C1_1">
+    <viewAttributes>
+      <viewAttribute id="VIOLENT_CRM_TTL_RATE"/>
+      <viewAttribute id="YEAR"/>
+      <viewAttribute id="PROPERTY_CRM_TTL_RATE"/>
+      <viewAttribute id="JOIN$POPULATION$POPULATION" hidden="true"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="#gbi-student-006.UCR.tables::VIOLENT_CRIME_MASTER">
+      <mapping xsi:type="Calculation:AttributeMapping" target="VIOLENT_CRM_TTL_RATE" source="VIOLENT_CRM_TTL_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$POPULATION$POPULATION" source="POPULATION"/>
+    </input>
+    <input node="#gbi-student-006.UCR.tables::PROPERTY_CRIME_MASTER">
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROPERTY_CRM_TTL_RATE" source="PROPERTY_CRM_TTL_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$POPULATION$POPULATION" source="POPULATION"/>
+    </input>
+    <joinAttribute name="YEAR"/>
+    <joinAttribute name="JOIN$POPULATION$POPULATION"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="YEAR" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="YEAR"/>
+      <keyMapping columnObjectName="Join_1" columnName="YEAR"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="VIOLENT_CRM_TTL_RATE" order="1" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="VIOLENT_CRM_TTL_RATE"/>
+      <measureMapping columnObjectName="Join_1" columnName="VIOLENT_CRM_TTL_RATE"/>
+    </measure>
+    <measure id="PROPERTY_CRM_TTL_RATE" order="3" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="PROPERTY_CRM_TTL_RATE"/>
+      <measureMapping columnObjectName="Join_1" columnName="PROPERTY_CRM_TTL_RATE"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="91" y="267"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

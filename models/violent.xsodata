@@ -1,0 +1,13 @@
+service {
+
+"gbi-student-006.UCR.calculationviews::VIOLENT" as "ViolentCrimeDetails" keys generate local "ID"
+
+aggregates always (SUM of "VIOLENT_CRM_TTL");
+
+
+"GBI_006"."gbi-student-006.UCR.tables::STATE_MASTER" as "StateMaster"
+keys generate local "ID1";
+
+"gbi-student-006.UCR.calculationviews::CRIME_DETAILS" as "CrimeDetails" keys generate local "ID"
+aggregates always (SUM of "PROPERTY_CRM_TTL_RATE", SUM of "VIOLENT_CRM_TTL_RATE");
+}

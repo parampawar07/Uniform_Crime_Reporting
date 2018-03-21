@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+ xmlns="sap.m"
+ xmlns:core="sap.ui.core"
+ xmlns:fb="sap.ui.comp.filterbar"
+ xmlns:viz="sap.viz.ui5.controls"
+ xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+  xmlns:viz.data="sap.viz.ui5.data"
+   xmlns:html="http://www.w3.org/1999/xhtml" 
+    xmlns:l="sap.ui.layout"
+    xmlns:gmaps="openui5.googlemaps"
+    controllerName="content.Overview">
+   
+   <gmaps:Map lat="40.408495" lng="-95.521889" width="1400px" height="600px" zoom="4" zoomControl="true" apiKey="AIzaSyAKZ9KfkZU1BD00jVdhd5Ee_wgCR3GweU4">
+                <gmaps:markerCluster>
+                    <gmaps:MarkerCluster markers="{/CrimeDetails}">
+                        <gmaps:markers>
+                            <gmaps:Marker lat="{LATITUDE}" lng="{LONGITUDE}"  info="{parts:[{path:'STATE_NAME'},{path:'PROPERTY_CRIME_TTL'},{path:'BURG'},{path:'MTR_VEH_THF'},{path:'LARCENY_THF'},{path:'VIOLENT_CRIME_TTL'},{path:'AGRVTD_ASLT'},{path:'MURDR_N0NNEGLT_MANSLTR'},{path:'LEG_RAPE'},{path:'RVSD_RAPE'},{path:'RBRY'}], formatter:'content.Formatter.info'}" icon="openui5/googlemaps/themes/base/img/pinkball.png"></gmaps:Marker>
+                        </gmaps:markers>
+                    </gmaps:MarkerCluster>
+                </gmaps:markerCluster>
+                </gmaps:Map>
+                      
+            
+</mvc:View>
+ 

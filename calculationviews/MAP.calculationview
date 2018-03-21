@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="MAP" applyPrivilegeType="ANALYTIC_PRIVILEGE" dataCategory="CUBE" schemaVersion="2.3" defaultClient="$$client$$" visibility="reportingEnabled" outputViewType="Aggregation" calculationScenarioType="TREE_BASED" enforceSqlExecution="false">
+<descriptions defaultDescription="MAP"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="gbi-student-006.UCR.tables::VIOLENT_CRIME_MASTER" type="DATA_BASE_TABLE">
+    <viewAttributes allViewAttributes="true"/>
+    <columnObject schemaName="GBI_006" columnObjectName="gbi-student-006.UCR.tables::VIOLENT_CRIME_MASTER"/>
+  </DataSource>
+  <DataSource id="gbi-student-006.UCR.tables::PROPERTY_CRIME_MASTER" type="DATA_BASE_TABLE">
+    <viewAttributes allViewAttributes="true"/>
+    <columnObject schemaName="GBI_006" columnObjectName="gbi-student-006.UCR.tables::PROPERTY_CRIME_MASTER"/>
+  </DataSource>
+  <DataSource id="gbi-student-006.UCR.tables::STATE_MASTER" type="DATA_BASE_TABLE">
+    <viewAttributes allViewAttributes="true"/>
+    <columnObject schemaName="GBI_006" columnObjectName="gbi-student-006.UCR.tables::STATE_MASTER"/>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="AGRVTD_ASLT_RATE"/>
+      <viewAttribute id="LEG_RAPE_RATE"/>
+      <viewAttribute id="MURDR_N0NNEGLT_MANSLTR_RATE"/>
+      <viewAttribute id="RBRY_RATE"/>
+      <viewAttribute id="RVSD_RAPE_RATE"/>
+      <viewAttribute id="VIOLENT_CRM_TTL_RATE"/>
+      <viewAttribute id="STATE_ABBR"/>
+      <viewAttribute id="BURG_RATE"/>
+      <viewAttribute id="LARCENY_THF_RATE"/>
+      <viewAttribute id="MTR_VEH_THF_RATE"/>
+      <viewAttribute id="PROPERTY_CRM_TTL_RATE"/>
+      <viewAttribute id="JOIN$YEAR$YEAR" hidden="true"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="#gbi-student-006.UCR.tables::VIOLENT_CRIME_MASTER">
+      <mapping xsi:type="Calculation:AttributeMapping" target="AGRVTD_ASLT_RATE" source="AGRVTD_ASLT_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LEG_RAPE_RATE" source="LEG_RAPE_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MURDR_N0NNEGLT_MANSLTR_RATE" source="MURDR_N0NNEGLT_MANSLTR_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RBRY_RATE" source="RBRY_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RVSD_RAPE_RATE" source="RVSD_RAPE_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VIOLENT_CRM_TTL_RATE" source="VIOLENT_CRM_TTL_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STATE_ABBR" source="STATE_ABBR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$YEAR$YEAR" source="YEAR"/>
+    </input>
+    <input node="#gbi-student-006.UCR.tables::PROPERTY_CRIME_MASTER">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BURG_RATE" source="BURG_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LARCENY_THF_RATE" source="LARCENY_THF_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MTR_VEH_THF_RATE" source="MTR_VEH_THF_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROPERTY_CRM_TTL_RATE" source="PROPERTY_CRM_TTL_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$YEAR$YEAR" source="YEAR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STATE_ABBR" source="STATE_ABBR"/>
+    </input>
+    <joinAttribute name="JOIN$YEAR$YEAR"/>
+    <joinAttribute name="STATE_ABBR"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="LATITUDE"/>
+      <viewAttribute id="LONGITUDE"/>
+      <viewAttribute id="STATE_ABBR"/>
+      <viewAttribute id="AGRVTD_ASLT_RATE"/>
+      <viewAttribute id="LEG_RAPE_RATE"/>
+      <viewAttribute id="MURDR_N0NNEGLT_MANSLTR_RATE"/>
+      <viewAttribute id="RBRY_RATE"/>
+      <viewAttribute id="RVSD_RAPE_RATE"/>
+      <viewAttribute id="VIOLENT_CRM_TTL_RATE"/>
+      <viewAttribute id="STATE_ABBR_1"/>
+      <viewAttribute id="BURG_RATE"/>
+      <viewAttribute id="LARCENY_THF_RATE"/>
+      <viewAttribute id="MTR_VEH_THF_RATE"/>
+      <viewAttribute id="PROPERTY_CRM_TTL_RATE"/>
+      <viewAttribute id="STATE_NAME"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="#gbi-student-006.UCR.tables::STATE_MASTER">
+      <mapping xsi:type="Calculation:AttributeMapping" target="LATITUDE" source="LATITUDE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LONGITUDE" source="LONGITUDE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STATE_ABBR" source="STATE_ABBR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STATE_NAME" source="STATE_NAME"/>
+    </input>
+    <input node="#Join_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="AGRVTD_ASLT_RATE" source="AGRVTD_ASLT_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LEG_RAPE_RATE" source="LEG_RAPE_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MURDR_N0NNEGLT_MANSLTR_RATE" source="MURDR_N0NNEGLT_MANSLTR_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RBRY_RATE" source="RBRY_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RVSD_RAPE_RATE" source="RVSD_RAPE_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VIOLENT_CRM_TTL_RATE" source="VIOLENT_CRM_TTL_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STATE_ABBR_1" source="STATE_ABBR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BURG_RATE" source="BURG_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LARCENY_THF_RATE" source="LARCENY_THF_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MTR_VEH_THF_RATE" source="MTR_VEH_THF_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROPERTY_CRM_TTL_RATE" source="PROPERTY_CRM_TTL_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STATE_ABBR" source="STATE_ABBR"/>
+    </input>
+    <joinAttribute name="STATE_ABBR"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_2">
+  <attributes>
+    <attribute id="LATITUDE" order="1" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LATITUDE"/>
+      <keyMapping columnObjectName="Join_2" columnName="LATITUDE"/>
+    </attribute>
+    <attribute id="LONGITUDE" order="2" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LONGITUDE"/>
+      <keyMapping columnObjectName="Join_2" columnName="LONGITUDE"/>
+    </attribute>
+    <attribute id="STATE_ABBR" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STATE_ABBR"/>
+      <keyMapping columnObjectName="Join_2" columnName="STATE_ABBR"/>
+    </attribute>
+    <attribute id="STATE_NAME" order="24" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STATE_NAME"/>
+      <keyMapping columnObjectName="Join_2" columnName="STATE_NAME"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="AGRVTD_ASLT_RATE" order="4" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="AGRVTD_ASLT_RATE"/>
+      <measureMapping columnObjectName="Join_2" columnName="AGRVTD_ASLT_RATE"/>
+    </measure>
+    <measure id="LEG_RAPE_RATE" order="5" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="LEG_RAPE_RATE"/>
+      <measureMapping columnObjectName="Join_2" columnName="LEG_RAPE_RATE"/>
+    </measure>
+    <measure id="MURDR_N0NNEGLT_MANSLTR_RATE" order="6" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="MURDR_N0NNEGLT_MANSLTR_RATE"/>
+      <measureMapping columnObjectName="Join_2" columnName="MURDR_N0NNEGLT_MANSLTR_RATE"/>
+    </measure>
+    <measure id="RBRY_RATE" order="7" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="RBRY_RATE"/>
+      <measureMapping columnObjectName="Join_2" columnName="RBRY_RATE"/>
+    </measure>
+    <measure id="RVSD_RAPE_RATE" order="8" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="RVSD_RAPE_RATE"/>
+      <measureMapping columnObjectName="Join_2" columnName="RVSD_RAPE_RATE"/>
+    </measure>
+    <measure id="VIOLENT_CRM_TTL_RATE" order="9" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="VIOLENT_CRM_TTL_RATE"/>
+      <measureMapping columnObjectName="Join_2" columnName="VIOLENT_CRM_TTL_RATE"/>
+    </measure>
+    <measure id="BURG_RATE" order="10" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="BURG_RATE"/>
+      <measureMapping columnObjectName="Join_2" columnName="BURG_RATE"/>
+    </measure>
+    <measure id="LARCENY_THF_RATE" order="11" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="LARCENY_THF_RATE"/>
+      <measureMapping columnObjectName="Join_2" columnName="LARCENY_THF_RATE"/>
+    </measure>
+    <measure id="MTR_VEH_THF_RATE" order="12" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="MTR_VEH_THF_RATE"/>
+      <measureMapping columnObjectName="Join_2" columnName="MTR_VEH_THF_RATE"/>
+    </measure>
+    <measure id="PROPERTY_CRM_TTL_RATE" order="13" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="PROPERTY_CRM_TTL_RATE"/>
+      <measureMapping columnObjectName="Join_2" columnName="PROPERTY_CRM_TTL_RATE"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures>
+    <measure id="PROPERTY_CRIME_TTL" hidden="false" order="14" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="17" scale="2">
+      <descriptions defaultDescription="PROPERTY_CRIME_TTL"/>
+      <formula>&quot;PROPERTY_CRM_TTL_RATE&quot;/51</formula>
+    </measure>
+    <measure id="VIOLENT_CRIME_TTL" hidden="false" order="15" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="17" scale="0" key="true">
+      <descriptions defaultDescription="VIOLENT_CRIME_TTL"/>
+      <formula>&quot;VIOLENT_CRM_TTL_RATE&quot;/51</formula>
+    </measure>
+    <measure id="BURG" hidden="false" order="16" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="17" scale="2">
+      <descriptions defaultDescription="BURG"/>
+      <formula>&quot;BURG_RATE&quot;/51</formula>
+    </measure>
+    <measure id="LARCENY_THF" hidden="false" order="17" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="17" scale="2">
+      <descriptions defaultDescription="LARCENY_THF"/>
+      <formula>&quot;LARCENY_THF_RATE&quot;/51</formula>
+    </measure>
+    <measure id="MTR_VEH_THF" hidden="false" order="18" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="17" scale="2">
+      <descriptions defaultDescription="MTR_VEH_THF"/>
+      <formula>&quot;MTR_VEH_THF_RATE&quot;/51</formula>
+    </measure>
+    <measure id="LEG_RAPE" hidden="false" order="19" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="17" scale="2">
+      <descriptions defaultDescription="LEG_RAPE"/>
+      <formula>&quot;LEG_RAPE_RATE&quot;/51</formula>
+    </measure>
+    <measure id="RVSD_RAPE" hidden="false" order="20" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="17" scale="2">
+      <descriptions defaultDescription="RVSD_RAPE"/>
+      <formula>&quot;RVSD_RAPE_RATE&quot;/51</formula>
+    </measure>
+    <measure id="MURDR_N0NNEGLT_MANSLTR" hidden="false" order="21" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="17" scale="2">
+      <descriptions defaultDescription="MURDR_N0NNEGLT_MANSLTR"/>
+      <formula>&quot;MURDR_N0NNEGLT_MANSLTR_RATE&quot;/51</formula>
+    </measure>
+    <measure id="AGRVTD_ASLT" hidden="false" order="22" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="17" scale="2">
+      <descriptions defaultDescription="AGRVTD_ASLT"/>
+      <formula>&quot;AGRVTD_ASLT_RATE&quot;/51</formula>
+    </measure>
+    <measure id="RBRY" hidden="false" order="23" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="17" scale="2">
+      <descriptions defaultDescription="RBRY"/>
+      <formula>&quot;RBRY_RATE&quot;/51</formula>
+    </measure>
+  </calculatedMeasures>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="112" y="427"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="108" y="289"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

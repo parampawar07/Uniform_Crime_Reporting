@@ -1,0 +1,4 @@
+service {
+"gbi-student-006.UCR.calculationviews::MAP" as "CrimeDetails" keys generate local "ID"
+aggregates always (SUM of "PROPERTY_CRM_TTL_RATE", SUM of "VIOLENT_CRM_TTL_RATE", SUM of "BURG_RATE",SUM of "MTR_VEH_THF_RATE", SUM of "LARCENY_THF_RATE", SUM of "AGRVTD_ASLT_RATE", SUM of "MURDR_N0NNEGLT_MANSLTR_RATE", SUM of "LEG_RAPE_RATE", SUM of "RVSD_RAPE_RATE", SUM of "RBRY_RATE");
+}     

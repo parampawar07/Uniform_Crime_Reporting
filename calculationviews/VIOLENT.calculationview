@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="VIOLENT" applyPrivilegeType="ANALYTIC_PRIVILEGE" dataCategory="CUBE" schemaVersion="2.3" defaultClient="$$client$$" visibility="reportingEnabled" outputViewType="Aggregation" calculationScenarioType="TREE_BASED" enforceSqlExecution="false">
+<descriptions defaultDescription="VIOLENT"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="gbi-student-006.UCR.tables::VIOLENT_CRIME_MASTER" type="DATA_BASE_TABLE">
+    <viewAttributes allViewAttributes="true"/>
+    <columnObject schemaName="GBI_006" columnObjectName="gbi-student-006.UCR.tables::VIOLENT_CRIME_MASTER"/>
+  </DataSource>
+  <DataSource id="gbi-student-006.UCR.tables::STATE_MASTER" type="DATA_BASE_TABLE">
+    <viewAttributes allViewAttributes="true"/>
+    <columnObject schemaName="GBI_006" columnObjectName="gbi-student-006.UCR.tables::STATE_MASTER"/>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="VIOLENT_CRM_TTL"/>
+      <viewAttribute id="AGRVTD_ASLT"/>
+      <viewAttribute id="AGRVTD_ASLT_RATE"/>
+      <viewAttribute id="LEG_RAPE"/>
+      <viewAttribute id="LEG_RAPE_RATE"/>
+      <viewAttribute id="MURDR_N0NNEGLT_MANSLTR"/>
+      <viewAttribute id="MURDR_N0NNEGLT_MANSLTR_RATE"/>
+      <viewAttribute id="POPULATION"/>
+      <viewAttribute id="RBRY"/>
+      <viewAttribute id="RBRY_RATE"/>
+      <viewAttribute id="RVSD_RAPE"/>
+      <viewAttribute id="RVSD_RAPE_RATE"/>
+      <viewAttribute id="STATE_ABBR"/>
+      <viewAttribute id="TYPE_CRIME"/>
+      <viewAttribute id="VIOLENT_CRM_TTL_RATE"/>
+      <viewAttribute id="YEAR"/>
+      <viewAttribute id="LATITUDE"/>
+      <viewAttribute id="LONGITUDE"/>
+      <viewAttribute id="STATE_ID"/>
+      <viewAttribute id="STATE_NAME"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="#gbi-student-006.UCR.tables::VIOLENT_CRIME_MASTER">
+      <mapping xsi:type="Calculation:AttributeMapping" target="VIOLENT_CRM_TTL" source=" VIOLENT_CRM_TTL "/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AGRVTD_ASLT" source="AGRVTD_ASLT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AGRVTD_ASLT_RATE" source="AGRVTD_ASLT_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LEG_RAPE" source="LEG_RAPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LEG_RAPE_RATE" source="LEG_RAPE_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MURDR_N0NNEGLT_MANSLTR" source="MURDR_N0NNEGLT_MANSLTR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MURDR_N0NNEGLT_MANSLTR_RATE" source="MURDR_N0NNEGLT_MANSLTR_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POPULATION" source="POPULATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RBRY" source="RBRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RBRY_RATE" source="RBRY_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RVSD_RAPE" source="RVSD_RAPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RVSD_RAPE_RATE" source="RVSD_RAPE_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STATE_ABBR" source="STATE_ABBR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TYPE_CRIME" source="TYPE_CRIME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VIOLENT_CRM_TTL_RATE" source="VIOLENT_CRM_TTL_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+    </input>
+    <input node="#gbi-student-006.UCR.tables::STATE_MASTER">
+      <mapping xsi:type="Calculation:AttributeMapping" target="LATITUDE" source="LATITUDE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LONGITUDE" source="LONGITUDE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STATE_ID" source="STATE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STATE_NAME" source="STATE_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STATE_ABBR" source="STATE_ABBR"/>
+    </input>
+    <joinAttribute name="STATE_ABBR"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="POPULATION" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="POPULATION"/>
+      <keyMapping columnObjectName="Join_1" columnName="POPULATION"/>
+    </attribute>
+    <attribute id="STATE_ABBR" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STATE_ABBR"/>
+      <keyMapping columnObjectName="Join_1" columnName="STATE_ABBR"/>
+    </attribute>
+    <attribute id="TYPE_CRIME" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TYPE_CRIME"/>
+      <keyMapping columnObjectName="Join_1" columnName="TYPE_CRIME"/>
+    </attribute>
+    <attribute id="YEAR" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="YEAR"/>
+      <keyMapping columnObjectName="Join_1" columnName="YEAR"/>
+    </attribute>
+    <attribute id="LATITUDE" order="17" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LATITUDE"/>
+      <keyMapping columnObjectName="Join_1" columnName="LATITUDE"/>
+    </attribute>
+    <attribute id="LONGITUDE" order="18" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LONGITUDE"/>
+      <keyMapping columnObjectName="Join_1" columnName="LONGITUDE"/>
+    </attribute>
+    <attribute id="STATE_ID" order="19" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STATE_ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="STATE_ID"/>
+    </attribute>
+    <attribute id="STATE_NAME" order="20" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STATE_NAME"/>
+      <keyMapping columnObjectName="Join_1" columnName="STATE_NAME"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="VIOLENT_CRM_TTL" order="1" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="_VIOLENT_CRM_TTL_"/>
+      <measureMapping columnObjectName="Join_1" columnName="VIOLENT_CRM_TTL"/>
+    </measure>
+    <measure id="AGRVTD_ASLT" order="2" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="AGRVTD_ASLT"/>
+      <measureMapping columnObjectName="Join_1" columnName="AGRVTD_ASLT"/>
+    </measure>
+    <measure id="AGRVTD_ASLT_RATE" order="3" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="AGRVTD_ASLT_RATE"/>
+      <measureMapping columnObjectName="Join_1" columnName="AGRVTD_ASLT_RATE"/>
+    </measure>
+    <measure id="LEG_RAPE" order="4" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="LEG_RAPE"/>
+      <measureMapping columnObjectName="Join_1" columnName="LEG_RAPE"/>
+    </measure>
+    <measure id="LEG_RAPE_RATE" order="5" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="LEG_RAPE_RATE"/>
+      <measureMapping columnObjectName="Join_1" columnName="LEG_RAPE_RATE"/>
+    </measure>
+    <measure id="MURDR_N0NNEGLT_MANSLTR" order="6" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="MURDR_N0NNEGLT_MANSLTR"/>
+      <measureMapping columnObjectName="Join_1" columnName="MURDR_N0NNEGLT_MANSLTR"/>
+    </measure>
+    <measure id="MURDR_N0NNEGLT_MANSLTR_RATE" order="7" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="MURDR_N0NNEGLT_MANSLTR_RATE"/>
+      <measureMapping columnObjectName="Join_1" columnName="MURDR_N0NNEGLT_MANSLTR_RATE"/>
+    </measure>
+    <measure id="RBRY" order="9" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="RBRY"/>
+      <measureMapping columnObjectName="Join_1" columnName="RBRY"/>
+    </measure>
+    <measure id="RBRY_RATE" order="10" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="RBRY_RATE"/>
+      <measureMapping columnObjectName="Join_1" columnName="RBRY_RATE"/>
+    </measure>
+    <measure id="RVSD_RAPE" order="11" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="RVSD_RAPE"/>
+      <measureMapping columnObjectName="Join_1" columnName="RVSD_RAPE"/>
+    </measure>
+    <measure id="RVSD_RAPE_RATE" order="12" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="RVSD_RAPE_RATE"/>
+      <measureMapping columnObjectName="Join_1" columnName="RVSD_RAPE_RATE"/>
+    </measure>
+    <measure id="VIOLENT_CRM_TTL_RATE" order="15" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="VIOLENT_CRM_TTL_RATE"/>
+      <measureMapping columnObjectName="Join_1" columnName="VIOLENT_CRM_TTL_RATE"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="86" y="271"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

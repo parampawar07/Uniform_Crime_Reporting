@@ -1,0 +1,28 @@
+table.schemaName = "GBI_006";
+table.tableType = COLUMNSTORE;
+table.columns = [
+{name = "YEAR"; sqlType = NVARCHAR; length = 4; },
+{name = "POPULATION"; sqlType = NVARCHAR;
+length = 20; },
+{name = "PROPERTY_CRM_TTL"; sqlType = DECIMAL;
+precision = 17; scale = 2;},
+{name = "BURG"; sqlType = DECIMAL;
+precision = 17; scale = 2;
+},
+{name = "MTR_VEH_THF"; sqlType = DECIMAL;
+precision = 17; scale = 2; },
+{name = "LARCENY_THF"; sqlType = DECIMAL;
+precision = 17; scale = 2; },
+{name = "PROPERTY_CRM_TTL_RATE"; sqlType = DECIMAL;
+precision = 17; scale = 2; },
+{name = "BURG_RATE"; sqlType = DECIMAL;
+precision = 17; scale = 2; },
+{name = "LARCENY_THF_RATE"; sqlType = DECIMAL;
+precision = 17; scale = 2; }, 
+{name = "MTR_VEH_THF_RATE"; sqlType =
+DECIMAL; precision = 17; scale = 2; },
+{name = "STATE_ABBR"; sqlType = NVARCHAR;
+length = 20; },
+{name = "TYPE_CRIME"; sqlType = NVARCHAR;
+length = 40; }
+];

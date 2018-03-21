@@ -1,0 +1,17 @@
+table.schemaName = "GBI_006";
+table.tableType = COLUMNSTORE;
+table.columns = [
+{name = "STATE_ID"; sqlType = INTEGER;
+ },
+{name = "STATE_NAME"; sqlType = NVARCHAR;
+length = 30; },
+{name = "STATE_ABBR"; sqlType = NVARCHAR;
+length = 30; },
+{name = "LATITUDE"; sqlType = DECIMAL;
+precision = 30; scale=4;},
+{name = "LONGITUDE"; sqlType = DECIMAL;
+precision = 30; scale=4; }
+
+
+];
+  

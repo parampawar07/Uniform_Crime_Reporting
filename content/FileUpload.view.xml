@@ -1,0 +1,53 @@
+<mvc:View
+  controllerName="content.FileUpload"
+  xmlns:l="sap.ui.layout"
+  xmlns:u="sap.ui.unified"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  class="viewPadding">
+  <l:VerticalLayout>
+  <RadioButtonGroup columns="3" width="500px" id="rbg" class="sapUiMediumMarginBottom" select="radiobuttonselect">
+        <buttons>
+          <RadioButton id="RB1-1" text="Violent"/>
+          <RadioButton id="RB1-2" text="Property"/>
+        </buttons>
+      </RadioButtonGroup>
+    <u:FileUploader
+      id="FileLoader"
+      name="myFileUpload"
+      width="400px"
+      tooltip="Upload your file to the local server"
+      uploadComplete="handleUploadComplete"
+      change="handleValueChange"
+      typeMissmatch="handleTypeMissmatch"
+      style="Emphasized"
+      fileType="csv"
+      placeholder="Choose a file for Upload...">
+        <!--<u:parameters>
+          <u:FileUploaderParameter
+            name="param1"
+            value="Foo"/>
+          <u:FileUploaderParameter
+            name="param2"
+            value="bar"/>
+        </u:parameters>
+        <u:headerParameters>
+          <u:FileUploaderParameter
+            name="headerParam1"
+            value="Foo"/>
+          <u:FileUploaderParameter
+            name="headerParam2"
+            value="bar"/>
+        </u:headerParameters>-->
+      </u:FileUploader>
+      <HBox>
+    <Button text="Upload File" type="Accept" press="doFileUpload2" height="5rem" padding="0.25rem 39px"/>
+          <layoutData>
+            <FlexItemData growFactor="1" />
+          </layoutData>
+          <Button
+      text="Cancel" type="Reject" height="5rem" padding="0.25rem 39px"
+      press="handleCancel"/>
+       </HBox>
+  </l:VerticalLayout>
+</mvc:View>

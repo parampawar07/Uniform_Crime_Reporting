@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="PROPERTY" applyPrivilegeType="ANALYTIC_PRIVILEGE" dataCategory="CUBE" schemaVersion="2.3" defaultClient="$$client$$" visibility="reportingEnabled" outputViewType="Aggregation" calculationScenarioType="TREE_BASED" enforceSqlExecution="false">
+<descriptions defaultDescription="PROPERTY"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="gbi-student-006.UCR.tables::PROPERTY_CRIME_MASTER" type="DATA_BASE_TABLE">
+    <viewAttributes allViewAttributes="true"/>
+    <columnObject schemaName="GBI_006" columnObjectName="gbi-student-006.UCR.tables::PROPERTY_CRIME_MASTER"/>
+  </DataSource>
+  <DataSource id="gbi-student-006.UCR.tables::STATE_MASTER" type="DATA_BASE_TABLE">
+    <viewAttributes allViewAttributes="true"/>
+    <columnObject schemaName="GBI_006" columnObjectName="gbi-student-006.UCR.tables::STATE_MASTER"/>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="BURG"/>
+      <viewAttribute id="BURG_RATE"/>
+      <viewAttribute id="LARCENY_THF"/>
+      <viewAttribute id="LARCENY_THF_RATE"/>
+      <viewAttribute id="MTR_VEH_THF"/>
+      <viewAttribute id="MTR_VEH_THF_RATE"/>
+      <viewAttribute id="POPULATION"/>
+      <viewAttribute id="PROPERTY_CRM_TTL"/>
+      <viewAttribute id="PROPERTY_CRM_TTL_RATE"/>
+      <viewAttribute id="STATE_ABBR"/>
+      <viewAttribute id="TYPE_CRIME"/>
+      <viewAttribute id="YEAR"/>
+      <viewAttribute id="LATITUDE"/>
+      <viewAttribute id="LONGITUDE"/>
+      <viewAttribute id="STATE_ID"/>
+      <viewAttribute id="STATE_NAME"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="#gbi-student-006.UCR.tables::PROPERTY_CRIME_MASTER">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BURG" source="BURG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BURG_RATE" source="BURG_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LARCENY_THF" source="LARCENY_THF"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LARCENY_THF_RATE" source="LARCENY_THF_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MTR_VEH_THF" source="MTR_VEH_THF"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MTR_VEH_THF_RATE" source="MTR_VEH_THF_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POPULATION" source="POPULATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROPERTY_CRM_TTL" source="PROPERTY_CRM_TTL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROPERTY_CRM_TTL_RATE" source="PROPERTY_CRM_TTL_RATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STATE_ABBR" source="STATE_ABBR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TYPE_CRIME" source="TYPE_CRIME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+    </input>
+    <input node="#gbi-student-006.UCR.tables::STATE_MASTER">
+      <mapping xsi:type="Calculation:AttributeMapping" target="LATITUDE" source="LATITUDE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LONGITUDE" source="LONGITUDE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STATE_ID" source="STATE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STATE_NAME" source="STATE_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STATE_ABBR" source="STATE_ABBR"/>
+    </input>
+    <joinAttribute name="STATE_ABBR"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="POPULATION" order="7" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="POPULATION"/>
+      <keyMapping columnObjectName="Join_1" columnName="POPULATION"/>
+    </attribute>
+    <attribute id="STATE_ABBR" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STATE_ABBR"/>
+      <keyMapping columnObjectName="Join_1" columnName="STATE_ABBR"/>
+    </attribute>
+    <attribute id="TYPE_CRIME" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TYPE_CRIME"/>
+      <keyMapping columnObjectName="Join_1" columnName="TYPE_CRIME"/>
+    </attribute>
+    <attribute id="YEAR" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="YEAR"/>
+      <keyMapping columnObjectName="Join_1" columnName="YEAR"/>
+    </attribute>
+    <attribute id="STATE_NAME" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STATE_NAME"/>
+      <keyMapping columnObjectName="Join_1" columnName="STATE_NAME"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="BURG" order="1" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="BURG"/>
+      <measureMapping columnObjectName="Join_1" columnName="BURG"/>
+    </measure>
+    <measure id="BURG_RATE" order="2" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="BURG_RATE"/>
+      <measureMapping columnObjectName="Join_1" columnName="BURG_RATE"/>
+    </measure>
+    <measure id="LARCENY_THF" order="3" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="LARCENY_THF"/>
+      <measureMapping columnObjectName="Join_1" columnName="LARCENY_THF"/>
+    </measure>
+    <measure id="LARCENY_THF_RATE" order="4" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="LARCENY_THF_RATE"/>
+      <measureMapping columnObjectName="Join_1" columnName="LARCENY_THF_RATE"/>
+    </measure>
+    <measure id="MTR_VEH_THF" order="5" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="MTR_VEH_THF"/>
+      <measureMapping columnObjectName="Join_1" columnName="MTR_VEH_THF"/>
+    </measure>
+    <measure id="MTR_VEH_THF_RATE" order="6" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="MTR_VEH_THF_RATE"/>
+      <measureMapping columnObjectName="Join_1" columnName="MTR_VEH_THF_RATE"/>
+    </measure>
+    <measure id="PROPERTY_CRM_TTL" order="8" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="PROPERTY_CRM_TTL"/>
+      <measureMapping columnObjectName="Join_1" columnName="PROPERTY_CRM_TTL"/>
+    </measure>
+    <measure id="PROPERTY_CRM_TTL_RATE" order="9" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="PROPERTY_CRM_TTL_RATE"/>
+      <measureMapping columnObjectName="Join_1" columnName="PROPERTY_CRM_TTL_RATE"/>
+    </measure>
+    <measure id="LATITUDE" order="13" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="LATITUDE"/>
+      <measureMapping columnObjectName="Join_1" columnName="LATITUDE"/>
+    </measure>
+    <measure id="LONGITUDE" order="14" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="LONGITUDE"/>
+      <measureMapping columnObjectName="Join_1" columnName="LONGITUDE"/>
+    </measure>
+    <measure id="STATE_ID" order="15" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="STATE_ID"/>
+      <measureMapping columnObjectName="Join_1" columnName="STATE_ID"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="91" y="253"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
